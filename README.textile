@@ -10,3 +10,8 @@ Supports:
 4. Spring Task Scheduler scheduling
 5. Scheduling with Quartz
 6. JasperReports reporting & charts
+
+See also:
+
+1. "Cascading":http://www.cascading.org/ includes: Lingual, Pattern
+
