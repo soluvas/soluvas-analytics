@@ -1,0 +1,12 @@
+h1. Soluvas Analytics
+
+Open source analytics gathering, processing, presentation framework for Java
+
+Supports:
+
+1. D3 JavaScript charting library
+2. Spring Batch
+3. Hadoop integration
+4. Spring Task Scheduler scheduling
+5. Scheduling with Quartz
+6. JasperReports reporting & charts
