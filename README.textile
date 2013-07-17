@@ -4,7 +4,7 @@ Open source analytics gathering, processing, presentation framework for Java
 
 Supports:
 
-1. "D3":http://d3js.org/ JavaScript charting library
+1. "D3":http://d3js.org/ / "Rickshaw":http://code.shutterstock.com/rickshaw/ JavaScript charting library
 2. Spring Batch
 3. Hadoop integration
 4. Spring Task Scheduler scheduling
