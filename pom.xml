@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.soluvas</groupId>
+	<artifactId>org.soluvas.analytics.parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Soluvas Analytics Build</name>
+	<description>Soluvas Analytics Framework.</description>
+	<url>http://www.soluvas.com/</url>
+
+	<modules>
+		<module>core</module>
+		<module>web</module>
+	</modules>
+
+	<scm>
+		<connection>scm:git:git@github.com:soluvas/soluvas-analytics.git</connection>
+		<url>http://github.com/soluvas/soluvas-analytics</url>
+	</scm>
+	<organization>
+		<name>Soluvas</name>
+		<url>http://www.soluvas.com/</url>
+	</organization>
+	<developers>
+		<developer>
+			<id>ceefour</id>
+			<name>Hendy Irawan</name>
+			<url>http://www.hendyirawan.com/</url>
+			<email>hendy@soluvas.com</email>
+			<organization>Soluvas</organization>
+			<organizationUrl>http://www.soluvas.com/</organizationUrl>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>Eclipse Public License</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+		</license>
+	</licenses>
+
+	<properties>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.soluvas</groupId>
+				<artifactId>org.soluvas.analytics.core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.soluvas</groupId>
+				<artifactId>org.soluvas.analytics.web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.soluvas</groupId>
+				<artifactId>org.soluvas.parent</artifactId>
+				<version>2.1.0-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.9</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<!-- prevent Maven from checking the net and slowing down builds -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.14</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+  		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>sonatype-nexus</id>
+			<url>https://oss.sonatype.org/content/groups/public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>bippo-nexus-public</id>
+			<url>http://nexus.bippo.co.id/nexus/content/groups/public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>JBOSS_NEXUS</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>typesafe</id>
+			<name>Typesafe Repository</name>
+			<url>http://repo.typesafe.com/typesafe/releases/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
+	<profiles>
+		<profile>
+			<!-- To deploy to bippo-gk, use: mvn -Pbippo-gk -o -DskipTests clean install 
+				deploy -->
+			<id>bippo-gk</id>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>bippo-gk-snapshots</id>
+					<url>http://192.168.44.17:8080/nexus/content/repositories/snapshots/</url>
+				</snapshotRepository>
+				<repository>
+					<id>bippo-gk-releases</id>
+					<url>http://192.168.44.17:8080/nexus/content/repositories/releases/</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+	</profiles>
+	
+</project>

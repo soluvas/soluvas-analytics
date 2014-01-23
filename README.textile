@@ -1,6 +1,8 @@
 h1. Soluvas Analytics
 
-Open source analytics gathering, processing, presentation framework for Java
+Open source analytics gathering, processing, presentation framework for Java.
+
+http://www.soluvas.com/
 
 Supports:
 
@@ -14,4 +16,20 @@ Supports:
 See also:
 
 1. "Cascading":http://www.cascading.org/ includes: Lingual, Pattern
+2. "Wicket chart.js":http://pingunaut.com/wicket-chartjs/
 
+h2. Modules
+
+h3. org.soluvas.analytics.core
+
+Core APIs, non-web framework specific, JAX-RS resources.
+
+h3. org.soluvas.analytics.web
+
+Web components, works with Wicket, Bootstrap, and Atmosphere (for push).
+
+h2. FAQ
+
+1. Why not "Highcharts":http://www.highcharts.com/ / "Wicked Charts":https://code.google.com/p/wicked-charts/ ?
+
+Highcharts is not compatible with Eclipse Public License. :(

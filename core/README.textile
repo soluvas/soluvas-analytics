@@ -1,0 +1,20 @@
+h1. Soluvas Analytics Core
+
+h2. Render Non-interactive Chart to HTML
+
+Useful for general purpose, also "embedded" directly inside HTML email.
+
+See @org.soluvas.analytics.core.chart.GraphTest.blueChart()@
+
+h2. Render Non-interactive Chart to PDF/PNG/GIF/JPEG
+
+Useful for invoice, email attachment.
+
+Preparation:
+
+1. Install nodejs: @sudo aptitude install nodejs@
+2. Install PhantomJS: @sudo npm install -g phantomjs@
+   Note: PhantomJS also works with HTTP(s?) URIs, not just filesystem.
+3. "Rasterize":https://github.com/ariya/phantomjs/blob/master/examples/rasterize.js :
+
+bc. phantomjs rasterize.js http://people.opera.com/howcome/2005/ala/sample.html sample.pdf A4
