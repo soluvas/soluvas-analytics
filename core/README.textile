@@ -18,3 +18,50 @@ Preparation:
 3. "Rasterize":https://github.com/ariya/phantomjs/blob/master/examples/rasterize.js :
 
 bc. phantomjs rasterize.js http://people.opera.com/howcome/2005/ala/sample.html sample.pdf A4
+
+h2. Data Source
+
+Typically data stream can be viewed as temporal. Even a "non-temporal" data is temporal,
+because what you see is a snapshot, and this data is already stale when you view it.
+
+Terms: 
+1. @generationTime@, time when the input was collected, calculated, and generated
+2. @retrievalTime@, time when the generated data was retrieved from the data source.
+   This data might have been stored in the data store for some time after being generated.
+
+Generation strategies:
+0. *Static.* Aka no generation, where the data you want is already prepared in the storage.
+   Listed just for completeness. In practice you don't do analytics using static data,
+   but you can test your Analytics UI using static data.
+1. *Synchronous On-demand.* Data is generated when it is retrieved.
+   Simplest, least scalable. If generation is fast then no problem.
+   If generation takes a long time, UX may be hampered.
+   Generation should never do full table scan where processing is done locally,
+   but should be either: (a) indexable SQL query, (b) (materialized) view, or (c) map-reduce.
+2. *Asynchronous On-demand.* Data is generated when it is retrieved, then pushed when ready.
+   Complex, requires Atmosphere, least scalable. UX may be weird, and you'll need
+   to provide loading spinner.
+3. *Event Driven.* Data is generated when a dependency is changed, for example
+   when a checklist done status changes, the completion progress for that location
+   is calculated, which may further trigger other calculation.
+4. *Scheduled.* Data is generated when a dependency is changed, for example
+   when a checklist done status changes, the completion progress for that location
+   is calculated, which may further trigger other calculation.
+   
+Storage strategies: (works with all generation strategies, however for "Synchronous On-demand"
+it's not much use other for archival purpose)
+1. *Last Only*. Only store one data point, previous points are discarded.
+   Effectively *Capped* at 1.
+2. *Capped*. Only store max _X_ data point.
+3. *History*. Store all data points.
+
+In metrics world, there may be other storage strategies e.g. sampled (store every x points), moving average.
+
+Storage choices include:
+1. *In-memory*. @ArrayDeque@ is probably a good choice.
+2. *JSON file*. This can be saved on filesystem, HTTP, S3, git, Dropbox, WebDAV, JCR/CMIS.
+
+Retrieval strategies:
+1. *Store-first, Push-later*. Request retrieval (which may or may not trigger generation),
+   display the stored data if exists. Atmosphere will handle if newer data comes later,
+   which may be continuous. 
