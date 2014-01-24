@@ -25,8 +25,8 @@ Typically data stream can be viewed as temporal. Even a "non-temporal" data is t
 because what you see is a snapshot, and this data is already stale when you view it.
 
 Terms: 
-1. @generationTime@, time when the input was collected, calculated, and generated
-2. @retrievalTime@, time when the generated data was retrieved from the data source.
+1. @generationTime@, _start_ time when the input was collected, calculated, and generated
+2. @retrievalTime@, time when the generated data was _requested_ from the data store.
    This data might have been stored in the data store for some time after being generated.
 
 Generation strategies:
@@ -60,9 +60,9 @@ it's not much use other for archival purpose)
 In metrics world, there may be other storage strategies e.g. sampled (store every x points), moving average.
 
 Storage choices include:
-1. *In-memory*. For periodic, @ArrayDeque@ of @LinkedHashMap@ / @TreeMap@ is
-   probably a good choice. If you need to store point time, use @LinkedHashMap@ of
-   @LinkedHashMap@ / @TreeMap@, where the first map is keyed by time.
+1. *In-memory*. For periodic, @ArrayDeque@ of @(synchronized)LinkedHashMap@ / @TreeMap@ is
+   probably a good choice. If you need to store point time, use @(synchronized)LinkedHashMap@ of
+   @(synchronized)LinkedHashMap@ / @TreeMap@, where the first map is keyed by time.
 2. *JSON file*. This can be saved on filesystem, HTTP, S3, git, Dropbox, WebDAV, JCR/CMIS.
 
 Retrieval strategies:
