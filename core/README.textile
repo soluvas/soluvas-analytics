@@ -58,10 +58,20 @@ it's not much use other for archival purpose)
 In metrics world, there may be other storage strategies e.g. sampled (store every x points), moving average.
 
 Storage choices include:
-1. *In-memory*. @ArrayDeque@ is probably a good choice.
+1. *In-memory*. For periodic, @ArrayDeque@ of @LinkedHashMap@ / @TreeMap@ is
+   probably a good choice. If you need to store point time, use @LinkedHashMap@ of
+   @LinkedHashMap@ / @TreeMap@, where the first map is keyed by time.
 2. *JSON file*. This can be saved on filesystem, HTTP, S3, git, Dropbox, WebDAV, JCR/CMIS.
 
 Retrieval strategies:
 1. *Store-first, Push-later*. Request retrieval (which may or may not trigger generation),
    display the stored data if exists. Atmosphere will handle if newer data comes later,
    which may be continuous. 
+
+Push strategies:
+1. *Page / data point*. Less efficient, generates and pushes entire data point
+   (e.g. progress for all places), but may be simpler.
+2. *Partial*. More efficient, e.g. generates only progress for a single place,
+   can be nice effect (e.g. animate addition/change/removal of partial data).
+   However may be much more complex to manage.
+
