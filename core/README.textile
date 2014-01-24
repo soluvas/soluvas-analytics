@@ -47,7 +47,9 @@ Generation strategies:
 4. *Scheduled.* Data is generated when a dependency is changed, for example
    when a checklist done status changes, the completion progress for that location
    is calculated, which may further trigger other calculation.
-   
+5. *Startup*. Data is generated at application/tenant startup or at first lazy load.
+   Useful when combined with *Event-Driven*/*Scheduled* but use a transient/in-memory storage.
+
 Storage strategies: (works with all generation strategies, however for "Synchronous On-demand"
 it's not much use other for archival purpose)
 1. *Last Only*. Only store one data point, previous points are discarded.
