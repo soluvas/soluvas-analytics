@@ -12,6 +12,7 @@ Supports:
 4. Spring Task Scheduler scheduling
 5. Scheduling with Quartz
 6. JasperReports reporting & charts
+7. OLAP with Mondrian (optionally Saiku for UI)
 
 See also:
 

@@ -64,6 +64,12 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			
+			<dependency>
+				<groupId>pentaho</groupId>
+				<artifactId>mondrian</artifactId>
+				<version>3.6.5</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -151,6 +157,11 @@
 			<id>typesafe</id>
 			<name>Typesafe Repository</name>
 			<url>http://repo.typesafe.com/typesafe/releases/</url>
+		</repository>
+		<!-- Check at http://maven-repository.com/artifact/pentaho/mondrian -->
+		<repository>
+			<id>pentaho-releases</id>
+			<url>http://repository.pentaho.org/artifactory/repo/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
