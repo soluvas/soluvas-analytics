@@ -8,11 +8,13 @@ Supports:
 
 1. "D3":http://d3js.org/ / "Rickshaw":http://code.shutterstock.com/rickshaw/ JavaScript charting library
 2. Spring Batch
-3. Hadoop integration
+3. Hadoop and/or Spark integration
 4. Spring Task Scheduler scheduling
 5. Scheduling with Quartz
 6. JasperReports reporting & charts
 7. OLAP with Mondrian (optionally Saiku for UI)
+8. Apache Cassandra datastore
+9. Twitter Storm
 
 See also:
 
