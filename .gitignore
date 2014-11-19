@@ -5,3 +5,11 @@ build
 .settings
 .classpath
 .project
+
+# Intellij
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+.idea_modules/
