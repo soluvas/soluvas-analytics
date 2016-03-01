@@ -17,8 +17,8 @@
 	</modules>
 
 	<scm>
-		<connection>scm:git:git@github.com:soluvas/soluvas-analytics.git</connection>
-		<url>http://github.com/soluvas/soluvas-analytics</url>
+		<connection>scm:git:https://github.com/soluvas/soluvas-analytics.git</connection>
+		<url>https://github.com/soluvas/soluvas-analytics</url>
 	</scm>
 	<organization>
 		<name>Soluvas</name>
@@ -68,17 +68,17 @@
 				<scope>import</scope>
 			</dependency>
 			
-			<dependency>
-				<groupId>pentaho</groupId>
-				<artifactId>mondrian</artifactId>
-				<version>3.6.6.soluvas1-SNAPSHOT</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>log4j</artifactId>
-						<groupId>log4j</groupId>
-					</exclusion>
-				</exclusions>
-			</dependency>
+			<!--<dependency>-->
+				<!--<groupId>pentaho</groupId>-->
+				<!--<artifactId>mondrian</artifactId>-->
+				<!--<version>3.6.6.soluvas1-SNAPSHOT</version>-->
+				<!--<exclusions>-->
+					<!--<exclusion>-->
+						<!--<artifactId>log4j</artifactId>-->
+						<!--<groupId>log4j</groupId>-->
+					<!--</exclusion>-->
+				<!--</exclusions>-->
+			<!--</dependency>-->
 		</dependencies>
 	</dependencyManagement>
 
@@ -88,7 +88,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.3</version>
+					<version>3.5.1</version>
 					<configuration>
 						<source>1.8</source>
 						<target>1.8</target>
